@@ -1,0 +1,17 @@
+final Map<String, String> enUs = {
+  'msg_network_err': 'Network Error',
+  'msg_something_went_wrong': 'Something Went Wrong!',
+  "lbl_phone_number": "Phone Number",
+  "lbl_textsample": "New Text",
+  "msg_welcome": "Welcome Flutter",
+  "msg_don_t_have_an_a": "Don’t have an account? ",
+  "lbl_register": "Register",
+  "msg_sign_in_to_cont": "Sign in to continue",
+  "lbl_your_email": "Your Email",
+  "lbl_password": "Password",
+  "lbl_sign_in": "Sign In",
+  "lbl_or": "OR",
+  "view_details": "View Details",
+  "msg_forgot_password": "Forgot Password?",
+  "no_network": "No Network",
+};
