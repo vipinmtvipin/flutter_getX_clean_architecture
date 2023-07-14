@@ -1,4 +1,4 @@
-
+import '../../config.dart' show environmentalHost;
 /*
  * Copyright (c) 2021, Vipin.
  */
@@ -7,7 +7,7 @@
 class NetworkKeys {
   NetworkKeys._();
 
-  static const String base_url = 'https://dummyjson.com';
+  static String base_url = environmentalHost[StringKeys.base_url] ?? "";
 
   static const String login = '/auth/login';
   static const String products = '/products';
@@ -20,7 +20,10 @@ class StringKeys {
 
   static const String no_network = 'no_network';
   static const String server_error = 'server_error';
+  static const String base_url = 'BASE_URL';
+  static const String api_key = 'API_KEY';
 }
+
 
 /// Constants for SharedPreferences
 class StorageKeys {

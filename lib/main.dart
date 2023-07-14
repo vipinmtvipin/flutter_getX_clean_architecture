@@ -10,9 +10,12 @@ import 'core/theme/themes.dart';
 import 'core/utils/initial_bindings.dart';
 import 'core/utils/logger.dart';
 import 'core/utils/resource_string.dart';
+import './config.dart' show environmentalHost;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  Logger.log("ENVIRONMENT", "-***<<<-- ${environmentalHost['API_KEY']} --*>>>**-");
 
   /** init the local session storage**/
   await GetStorage.init();

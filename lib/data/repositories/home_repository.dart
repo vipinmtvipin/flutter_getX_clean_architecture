@@ -23,7 +23,7 @@ class HomeRepositoryIml extends HomeRepository {
   }
 
   @override
-  Future<List<PostResponds>?> getPostList() async {
+  Future<PostResponds?> getPostList() async {
    /* try {
       Response response = await _apiService.dio.get(NetworkKeys.products,
           //queryParameters: payload,
