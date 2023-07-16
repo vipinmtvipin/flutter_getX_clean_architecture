@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../data/api/api_service.dart';
 import '../../data/repositories/home_repository.dart';
 import '../../data/repositories/login_repository.dart';
+import '../../presentation/service/common_service.dart';
 import '../network/connectivity_service.dart';
 
 
@@ -13,11 +14,9 @@ class InitialBindings extends Bindings {
   @override
   void dependencies() {
 
-    Get.put(ApiService());
+    Get.lazyPut(() => CommonService());
 
     Get.lazyPut(() => LoginRepositoryIml());
-    Get.lazyPut(() => HomeRepositoryIml());
-
 
   }
 }

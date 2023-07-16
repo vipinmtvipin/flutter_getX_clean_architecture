@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -6,6 +8,7 @@ import 'package:getx_clean_template_vip/core/utils/logger.dart';
 import 'package:getx_clean_template_vip/domain/usecases/login_use_case.dart';
 
 import '../../../core/network/connectivity_service.dart';
+import '../../../core/network/async_api_call.dart';
 import '../../../core/routes/app_routes.dart';
 import '../../../core/routes/navigation_args.dart';
 import '../../../core/utils/resource_string.dart';
@@ -47,36 +50,65 @@ class LoginController extends BaseController {
   }
 
    callLogin() async {
-    try {
-      if(await ConnectivityService.isConnected()) {
 
+      if(await ConnectivityService.isConnected()) {
         showLoadingDialoge();
 
         LoginRequest postLoginRequest = LoginRequest(
             username: emailController.text,
             password: passwordController.text);
 
-        var responds = await _loginUseCase.execute(postLoginRequest);
 
-        if (responds != null) {
-          hideLoadingDialoge();
-          Logger.log("LOGIN", "----- Login Success-- ${responds.firstName}");
-          _handleLoginSuccessData(responds.token!);
-          _onOnTapLogInSuccess(responds);
-        } else {
-          hideLoadingDialoge();
-          showToast(ResourceString().getString("no_datafound")!);
+        final apiParallel = ApiParallel<dynamic>();
+
+        final apiCalls = [
+         _loginUseCase.execute(postLoginRequest),
+         _loginUseCase.execute(postLoginRequest)
+        ];
+
+        final List<ApiResponse> responses = [];
+        apiParallel.execute(apiCalls).listen((ApiResponse<dynamic> response) {
+          responses.add(response);
+        });
+
+
+       /* await for (ApiResponse response in apiParallel.execute(apiCalls)) {
+          responses.add(response);
+        }*/
+
+        // Process the responses
+        for (final ApiResponse response in responses) {
+          final dynamic responseData = await response.logResponse();
+          // Use the responseData as needed
+          Logger.log("LOGIN-prallel", "----- Arrived time-  ${DateTime. now()}");
+          final LoginResponds data =  responseData as LoginResponds;
+          Logger.log("LOGIN-prallel", "----- Login Success- ${data.firstName}");
         }
+
+
+
+
+     /*   try {
+          var responds = await _loginUseCase.execute(postLoginRequest);
+          if (responds != null) {
+            hideLoadingDialoge();
+            Logger.log("LOGIN", "----- Login Success-- ${responds.firstName}");
+            _handleLoginSuccessData(responds.token!);
+            _onOnTapLogInSuccess(responds);
+          }
+        } catch (e) {
+          hideLoadingDialoge();
+          showToast(e.toString());
+        }
+
+      */
       }else{
         hideLoadingDialoge();
         showToast(ResourceString().getString("no_network")!);
         /// when we use localization
-            //showToast("no_network".tr);
+          //showToast("no_network".tr);
       }
-    } catch (e) {
-      hideLoadingDialoge();
-      showToast(ResourceString().getString("server_error")!);
-    }
+
   }
 
 

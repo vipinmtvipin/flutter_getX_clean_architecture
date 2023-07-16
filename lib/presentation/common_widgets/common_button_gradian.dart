@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 class CommonButtonGradian extends StatelessWidget {
 
   final String _text;
-  final String _bold;
   final Color _color;
-  final Function _fn;
+  VoidCallback? _onTap;
 
-  const CommonButtonGradian(this._text,this._bold,this._color,this._fn, {super.key});
+   CommonButtonGradian(this._text,this._color,this._onTap, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class CommonButtonGradian extends StatelessWidget {
     height: 45.0,
     margin: const EdgeInsets.all(10),
     child: ElevatedButton(
-      onPressed: _fn as void Function()?,
+      onPressed: _onTap,
     style: ElevatedButton.styleFrom(
         onPrimary: Colors.black87,
         primary: Colors.grey[300],
@@ -39,8 +38,7 @@ class CommonButtonGradian extends StatelessWidget {
           child: Text(
             _text,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 14.0,color: _color,
-                fontWeight: _bold == 'bold' ?  FontWeight.bold : FontWeight.normal),
+            style: TextStyle(fontSize: 14.0,color: _color),
           ),
         ),
       ),

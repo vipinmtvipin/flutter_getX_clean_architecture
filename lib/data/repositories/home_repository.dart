@@ -8,13 +8,13 @@ import 'package:getx_clean_template_vip/domain/repositories/home_repository.dart
 import 'package:getx_clean_template_vip/domain/repositories/login_repository.dart';
 
 import '../../core/constants/constants.dart';
+import '../../core/network/dio_exception.dart';
 import '../../core/utils/logger.dart';
 import '../../core/utils/progress_dialog_utils.dart';
 import '../api/api_service.dart';
 
 class HomeRepositoryIml extends HomeRepository {
 
-  final _apiService = Get.find<ApiService>();
 
   @override
   Future<PostResponds?> getPostDetails(String id) {
@@ -24,21 +24,18 @@ class HomeRepositoryIml extends HomeRepository {
 
   @override
   Future<PostResponds?> getPostList() async {
-   /* try {
-      Response response = await _apiService.dio.get(NetworkKeys.products,
-          //queryParameters: payload,
+  /*  try {
+      Response response = await ApiService.instance.get(NetworkKeys.products,
+        // queryParameters: "",
           options: Options(contentType: 'application/json',));
-       // headers: {"Authorization": "Bearer "+token,}
 
-      if(response.statusCode == 200) {
         // final Map responseBody = json.decode(response.data);
         final List<PostResponds> _datas =  cartFromJson(response.toString());
         return _datas;
-      }else
-        return CartResponds.withError();
 
-    } catch (error, stacktrace) {
-      return CartResponds.withError();
+    }on DioException catch(e){
+      var error = DioExceptionData.fromDioError(e);
+      throw error.errorMessage;
     }*/
 
     // TODO: implement getPostList

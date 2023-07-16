@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
+import 'package:getx_clean_template_vip/core/extensions/text_extension.dart';
+import 'package:getx_clean_template_vip/presentation/common_widgets/common_button_gradian.dart';
 import 'package:getx_clean_template_vip/presentation/home_screen/controller/home_controller.dart';
 
 import '../../core/theme/app_style.dart';
@@ -15,16 +17,18 @@ import 'package:flutter/material.dart';
 import '../common_widgets/appbar/appbar_image.dart';
 import '../common_widgets/appbar/appbar_title.dart';
 import '../common_widgets/appbar/custom_app_bar.dart';
+import '../common_widgets/elevated_container.dart';
+import '../common_widgets/ripple.dart';
 
 class HomeScreen extends GetWidget<HomeController> {
   const HomeScreen({super.key});
 
   Widget build(BuildContext context) {
     return Responsive(
-       mobile: mobileHomeView(),
-       desktop: webHomeView(),
-       //tablet: body(),
-     );
+      mobile: mobileHomeView(),
+      desktop: webHomeView(),
+      //tablet: body(),
+    );
   }
 
   Widget mobileHomeView() {
@@ -90,11 +94,19 @@ class HomeScreen extends GetWidget<HomeController> {
                             textAlign: TextAlign.center,
                             style: AppStyle.txtPoppinsBold10),
                       )),
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: CircularProgressIndicator(
+                          color: ColorConstant.orange,
+                          strokeWidth: 2,
+                        ),
+                      ),
                     ]))));
   }
 
-  Widget webHomeView() {return Container();}
-
+  Widget webHomeView() {
+    return Container();
+  }
 
   void onTapLangauge() {
     Get.updateLocale(const Locale('ar', 'AR'));

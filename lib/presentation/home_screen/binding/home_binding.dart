@@ -9,6 +9,7 @@ import '../../../domain/usecases/home_postdetails_use_case.dart';
 class HomeBinding extends Bindings {
   @override
   void dependencies() {
+    Get.lazyPut(() => HomeRepositoryIml());
     Get.lazyPut(() => HomeUseCaseForGetPosts(Get.find<HomeRepositoryIml>()));
     Get.lazyPut(() => HomeUseCaseForGetPostDetails(Get.find<HomeRepositoryIml>()));
     Get.lazyPut(() => HomeController(Get.find(), Get.find() ));
