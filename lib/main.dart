@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -13,7 +14,10 @@ import 'core/utils/resource_string.dart';
 import './config.dart' show environmentalHost;
 
 void main() async {
+
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   Logger.log("ENVIRONMENT", "-***<<<-- ${environmentalHost['API_KEY']} --*>>>**-");
 
@@ -28,6 +32,7 @@ void main() async {
     Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
     runApp(MyApp());
   });
+  FlutterNativeSplash.remove();
 }
 
 class MyApp extends StatelessWidget {

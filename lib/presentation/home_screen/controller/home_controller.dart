@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:getx_clean_template_vip/core/utils/logger.dart';
 import 'package:getx_clean_template_vip/domain/entity/post_responds.dart';
 
+import '../../../core/network/isolate_util.dart';
 import '../../../core/routes/navigation_args.dart';
 import '../../../domain/usecases/home_post_use_case.dart';
 import '../../../domain/usecases/home_postdetails_use_case.dart';
@@ -24,51 +25,92 @@ class HomeController extends BaseController {
   void onInit() {
     Logger.log("HomeScreen", "-- token: $token");
 
-   // fetchApi_Serial();
-   // fetchApi_Parallel();
+     // fetchApi_Serial();
+     // fetchApi_Parallel();
+     // fetchApiParallel_DependentonOtherAPIValues();
+     // fetchApiParallel_LogResultIndependantly();
 
-    performBackgroundOperation(_postUseCase);
+     performBackgroundOperation(_postUseCase);
   }
 
+  void backgroundProcess(dynamic data, SendPort sendPort) {
+    // Access the argument and sendPort from the data map
+    final argument = data['argument'];
+    final mainSendPort = data['sendPort'];
+    // Perform your background process here
+    // Example: Send a message back to the main isolate
+    mainSendPort.send('Background process completed with argument: $argument');
+  }
   /// when we need to call api one by one use this flow
   fetchApi_Serial() async {
-    var responds_one = await _postDetailsUsecase.execute("");
+    var responds_one = await apiCall1();
+    Logger.log("RESULT-1", 'Result from API Calls: $responds_one');
     /**  'responds_two' will execute only after
      * 'responds_one' result come */
-    var responds_two = await _postUseCase.execute();
+    var responds_two = await apiCall2();
+    Logger.log("RESULT-2", 'Result from API Calls: $responds_two');
   }
 
   /// when we need to call api Asynchronous use this flow
   fetchApi_Parallel() async {
     /** 'Future.wait' call multiple apis parallel
      * both api call success then returned the result **/
-    final result = await Future.wait(
-        [_postDetailsUsecase.execute(""),
-          _postUseCase.execute()
-        ]);
+    final result = await Future.wait([apiCall1(), apiCall2()]);
 
-    var postDetails = result[0];
-    var posts = result[1];
+    Logger.log("RESULT-1", 'Result from API Calls: ${result[0]}');
+    Logger.log("RESULT-2", 'Result from API Calls: ${result[1]}');
   }
-  
-  fetchApiParallel_DependentonOtherAPIValues() async{
-    final result = await Future.wait(
-        [ _postDetailsUsecase.execute(""),
-          _postUseCase.execute()
-        ])
-    .then((resultData) {
+
+  fetchApiParallel_DependentonOtherAPIValues() async {
+    await Future.wait([apiCall1(), apiCall2()])
+        .then((resultData) async {
+      Logger.log("RESULT-1", 'Result from API Calls: ${resultData[0]}');
+      Logger.log("RESULT-2", 'Result from API Calls: ${resultData[1]}');
       // call another api based on first one value
-      var newResult = _postDetailsUsecase.execute(resultData[0]!.page!.toString());
-    }).whenComplete(() {
-      // hide loader
+      final result = await apiCall3(resultData[0]);
+      Logger.log("RESULT-3", 'Result from API Calls: $result');
     })
-    .onError((error, stackTrace) {Logger.log("ERROR",error.toString());});
+        .whenComplete(() {
+      Logger.log("RESULT", 'Result from API Finished');
+    })
+        .onError((error, stackTrace) {
+      Logger.log("ERROR", error.toString());
+    });
   }
 
+  fetchApiParallel_LogResultIndependantly() {
+    // Execute parallel API calls
+    apiCall1().then((result1) {
+      Logger.log("RESULT-1", 'Result from API Call 1: $result1');
+    });
+
+    apiCall2().then((result2) {
+      Logger.log("RESULT-2", 'Result from API Call 2: $result2');
+    });
+
+    apiCall3("Api call").then((result3) {
+      Logger.log("RESULT-3", 'Result from API Call 3: $result3');
+    });
+
+    Logger.log("RESULT", 'API calls initiated.');
+  }
 }
 
+// API call functions
+Future<String> apiCall1() async {
+  await Future.delayed(const Duration(seconds: 3));
+  return 'Result from API Call 1';
+}
 
+Future<String> apiCall2() async {
+  await Future.delayed(const Duration(seconds: 8));
+  return 'Result from API Call 2';
+}
 
+Future<String> apiCall3(String param) async {
+  await Future.delayed(const Duration(seconds: 4));
+  return '$param -- Result 3 Appended';
+}
 
 // TODO  - we should write all isolate functionality in out side of the class
 /// if want perform huge/UI affecting task
@@ -86,16 +128,18 @@ performBackgroundOperation(HomeUseCaseForGetPosts postUseCase) {
    * such as network requests, heavy calculations, or file I/O operations.**/
 
   Future.delayed(const Duration(milliseconds: 1000), () {
-    Logger.log("FreezingCALL","-- ${runHeavyTask(100000000)} -- "); // UI will freez when call directly
+    Logger.log("FreezingCALL",
+        "-- ${runHeavyTask(100000000)} -- "); // UI will freez when call directly
   });
 
   // useSpawn(postUseCase);
-  //useCompute();
+  // useCompute();
 }
 
 useCompute() async {
-   await compute(runHeavyTask, 100000000)
-      .then((value) { Logger.log("RESULT", "--SUM: $value ----"); });
+  await compute(runHeavyTask, 100000000).then((value) {
+    Logger.log("RESULT", "--SUM: $value ----");
+  });
 }
 
 /// here we can write any login image compression or local DB writing
@@ -112,26 +156,24 @@ Future<String> useSpawn(HomeUseCaseForGetPosts postUseCase) async {
   // create the port to receive data from
   final receivePort = ReceivePort();
   try {
-
-    await Isolate.spawn(
-        _readAndParseJson, [receivePort.sendPort, imageDownloadLink,postUseCase]);
+    await Isolate.spawn(_readAndParseJson,
+        [receivePort.sendPort, imageDownloadLink, postUseCase]);
 
     /// we can listen data from the isolate
     receivePort.listen((message) {
       if (message is String) {
         // Handle successful data
-        Logger.log("RESULT",'API response: $message');
+        Logger.log("RESULT", 'API response: $message');
       } else if (message is Error) {
         // Handle error
-        Logger.log("RESULT",'API request failed');
+        Logger.log("RESULT", 'API request failed');
       } else if (message is double) {
         // Handle progress update
         final progressPercentage = message * 100;
-        Logger.log("RESULT",'Download progress: ${progressPercentage.toStringAsFixed(2)}%');
+        Logger.log("RESULT",
+            'Download progress: ${progressPercentage.toStringAsFixed(2)}%');
       }
     });
-
-
   } on Object {
     // check if sending the entrypoint to the new isolate failed.
     // If it did, the result port won’t get any message, and needs to be closed
@@ -161,5 +203,5 @@ Future<void> _readAndParseJson(List<dynamic> args) async {
     sentPort.send(Error());
   }
 
- // Isolate.exit(sentPort, resultData);
+  // Isolate.exit(sentPort, resultData);
 }

@@ -8,7 +8,6 @@ import 'package:getx_clean_template_vip/core/utils/logger.dart';
 import 'package:getx_clean_template_vip/domain/usecases/login_use_case.dart';
 
 import '../../../core/network/connectivity_service.dart';
-import '../../../core/network/async_api_call.dart';
 import '../../../core/routes/app_routes.dart';
 import '../../../core/routes/navigation_args.dart';
 import '../../../core/utils/resource_string.dart';
@@ -16,10 +15,9 @@ import '../../../data/model/login/login_request.dart';
 import '../../../domain/entity/login_responds.dart';
 import '../../base_controller.dart';
 
-
-
 class LoginController extends BaseController {
   LoginController(this._loginUseCase);
+
   final LoginUseCase _loginUseCase;
 
   TextEditingController emailController = TextEditingController();
@@ -33,7 +31,6 @@ class LoginController extends BaseController {
   var isvalidPassword = false.obs;
 
   final sessionStorage = GetStorage();
-
 
   @override
   void onReady() {
@@ -49,68 +46,33 @@ class LoginController extends BaseController {
     passwordController.dispose();
   }
 
-   callLogin() async {
+  callLogin() async {
+    if (await ConnectivityService.isConnected()) {
+      showLoadingDialoge();
 
-      if(await ConnectivityService.isConnected()) {
-        showLoadingDialoge();
+      LoginRequest postLoginRequest = LoginRequest(
+          username: emailController.text, password: passwordController.text);
 
-        LoginRequest postLoginRequest = LoginRequest(
-            username: emailController.text,
-            password: passwordController.text);
-
-
-        final apiParallel = ApiParallel<dynamic>();
-
-        final apiCalls = [
-         _loginUseCase.execute(postLoginRequest),
-         _loginUseCase.execute(postLoginRequest)
-        ];
-
-        final List<ApiResponse> responses = [];
-        apiParallel.execute(apiCalls).listen((ApiResponse<dynamic> response) {
-          responses.add(response);
-        });
-
-
-       /* await for (ApiResponse response in apiParallel.execute(apiCalls)) {
-          responses.add(response);
-        }*/
-
-        // Process the responses
-        for (final ApiResponse response in responses) {
-          final dynamic responseData = await response.logResponse();
-          // Use the responseData as needed
-          Logger.log("LOGIN-prallel", "----- Arrived time-  ${DateTime. now()}");
-          final LoginResponds data =  responseData as LoginResponds;
-          Logger.log("LOGIN-prallel", "----- Login Success- ${data.firstName}");
-        }
-
-
-
-
-     /*   try {
-          var responds = await _loginUseCase.execute(postLoginRequest);
-          if (responds != null) {
-            hideLoadingDialoge();
-            Logger.log("LOGIN", "----- Login Success-- ${responds.firstName}");
-            _handleLoginSuccessData(responds.token!);
-            _onOnTapLogInSuccess(responds);
-          }
-        } catch (e) {
+      try {
+        var responds = await _loginUseCase.execute(postLoginRequest);
+        if (responds != null) {
           hideLoadingDialoge();
-          showToast(e.toString());
+          Logger.log("LOGIN", "----- Login Success-- ${responds.firstName}");
+          _handleLoginSuccessData(responds.token!);
+          _onOnTapLogInSuccess(responds);
         }
-
-      */
-      }else{
+      } catch (e) {
         hideLoadingDialoge();
-        showToast(ResourceString().getString("no_network")!);
-        /// when we use localization
-          //showToast("no_network".tr);
+        showToast(e.toString());
       }
+    } else {
+      hideLoadingDialoge();
+      showToast(ResourceString().getString("no_network")!);
 
+      /// when we use localization
+      //showToast("no_network".tr);
+    }
   }
-
 
   void _onOnTapLogInSuccess(LoginResponds responds) {
     Get.toNamed(AppRoutes.homePage, arguments: {
@@ -120,18 +82,18 @@ class LoginController extends BaseController {
   }
 
   void _onPasswordChanged() {
-    isvalidPassword.value =  !GetUtils.isNullOrBlank(passwordController!.text)!;
+    isvalidPassword.value = !GetUtils.isNullOrBlank(passwordController!.text)!;
   }
 
   void _onEmailChanged() {
-    isvalidEmail.value =   !GetUtils.isEmail(emailController!.text)!;
+    isvalidEmail.value = !GetUtils.isEmail(emailController!.text)!;
   }
 
   void _handleLoginSuccessData(String token) {
     // save value session
     sessionStorage.write(StorageKeys.token, token);
     // fetch date from session
-   var data = sessionStorage.read(StorageKeys.token);
-     Logger.log("LOGIN",'Logged token is :--- $data');
+    var data = sessionStorage.read(StorageKeys.token);
+    Logger.log("LOGIN", 'Logged token is :--- $data');
   }
 }

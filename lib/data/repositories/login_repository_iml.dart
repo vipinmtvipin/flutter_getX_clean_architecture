@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:getx_clean_template_vip/data/model/login/login_request.dart';
@@ -17,9 +19,8 @@ class LoginRepositoryIml extends LoginRepository {
       Response response = await ApiService.instance.post(NetworkKeys.login,
           data: request, options: Options(contentType: 'application/json'));
 
-        final LoginResponds _data = loginFromJson(response.toString());
+        final LoginResponds _data = LoginResponds.fomJson(response.data);
         return _data;
-
     }on DioException catch(e){
       var error = DioExceptionData.fromDioError(e);
       throw error.errorMessage;
