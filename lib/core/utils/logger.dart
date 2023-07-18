@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class Logger {
   static LogMode _logMode = LogMode.debug;
 
@@ -8,9 +10,9 @@ class Logger {
   static void log(String tag, dynamic message) {
     if (_logMode == LogMode.debug) {
       if (tag != null) {
-        print('[$tag] : $message');
+        debugPrint('[$tag] : $message');
       } else {
-        print(message);
+        debugPrint(message);
       }
     }
   }

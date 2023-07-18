@@ -1,22 +1,20 @@
 import 'dart:isolate';
 
-import 'package:async/async.dart';
+
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:getx_clean_template_vip/core/utils/logger.dart';
-import 'package:getx_clean_template_vip/domain/entity/post_responds.dart';
 
-import '../../../core/network/isolate_util.dart';
+
+
 import '../../../core/routes/navigation_args.dart';
 import '../../../domain/usecases/home_post_use_case.dart';
-import '../../../domain/usecases/home_postdetails_use_case.dart';
 import '../../base_controller.dart';
 
 class HomeController extends BaseController {
-  HomeController(this._postUseCase, this._postDetailsUsecase);
+  HomeController(this._postUseCase,);
 
   final HomeUseCaseForGetPosts _postUseCase;
-  final HomeUseCaseForGetPostDetails _postDetailsUsecase;
 
   var id = Get.arguments[NavigationArgs.id];
   var token = Get.arguments[NavigationArgs.data];
@@ -25,22 +23,14 @@ class HomeController extends BaseController {
   void onInit() {
     Logger.log("HomeScreen", "-- token: $token");
 
-     // fetchApi_Serial();
+      fetchApi_Serial();
      // fetchApi_Parallel();
      // fetchApiParallel_DependentonOtherAPIValues();
      // fetchApiParallel_LogResultIndependantly();
 
-     performBackgroundOperation(_postUseCase);
+    // performBackgroundOperation(_postUseCase);
   }
 
-  void backgroundProcess(dynamic data, SendPort sendPort) {
-    // Access the argument and sendPort from the data map
-    final argument = data['argument'];
-    final mainSendPort = data['sendPort'];
-    // Perform your background process here
-    // Example: Send a message back to the main isolate
-    mainSendPort.send('Background process completed with argument: $argument');
-  }
   /// when we need to call api one by one use this flow
   fetchApi_Serial() async {
     var responds_one = await apiCall1();
@@ -98,17 +88,17 @@ class HomeController extends BaseController {
 
 // API call functions
 Future<String> apiCall1() async {
-  await Future.delayed(const Duration(seconds: 3));
+  await Future.delayed(const Duration(seconds: 1));
   return 'Result from API Call 1';
 }
 
 Future<String> apiCall2() async {
-  await Future.delayed(const Duration(seconds: 8));
+  await Future.delayed(const Duration(seconds: 5));
   return 'Result from API Call 2';
 }
 
 Future<String> apiCall3(String param) async {
-  await Future.delayed(const Duration(seconds: 4));
+  await Future.delayed(const Duration(seconds: 3));
   return '$param -- Result 3 Appended';
 }
 

@@ -1,6 +1,6 @@
 import 'dart:isolate';
 
-import '../utils/logger.dart';
+import 'logger.dart';
 
 class IsolateUtils {
   static void runIsolate<T>(
