@@ -66,9 +66,7 @@ class LoginController extends BaseController {
         showToast(e.toString());
       }
     } else {
-      hideLoadingDialoge();
       showToast(ResourceString().getString("no_network")!);
-
       /// when we use localization
       //showToast("no_network".tr);
     }

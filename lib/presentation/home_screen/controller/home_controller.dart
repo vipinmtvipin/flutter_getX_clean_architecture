@@ -23,12 +23,12 @@ class HomeController extends BaseController {
   void onInit() {
     Logger.log("HomeScreen", "-- token: $token");
 
-      fetchApi_Serial();
-     // fetchApi_Parallel();
-     // fetchApiParallel_DependentonOtherAPIValues();
-     // fetchApiParallel_LogResultIndependantly();
+      // fetchApi_Serial();
+      //fetchApi_Parallel();
+      //fetchApiParallel_DependentonOtherAPIValues();
+      // fetchApiParallel_LogResultIndependantly();
 
-    // performBackgroundOperation(_postUseCase);
+     //  performBackgroundOperation(_postUseCase);
   }
 
   /// when we need to call api one by one use this flow
@@ -117,17 +117,17 @@ performBackgroundOperation(HomeUseCaseForGetPosts postUseCase) {
    * spawn() : -This is useful when performing tasks that might block the main thread,
    * such as network requests, heavy calculations, or file I/O operations.**/
 
-  Future.delayed(const Duration(milliseconds: 1000), () {
+/*  Future.delayed(const Duration(milliseconds: 1000), () {
     Logger.log("FreezingCALL",
-        "-- ${runHeavyTask(100000000)} -- "); // UI will freez when call directly
-  });
+        "-- ${runHeavyTask(10)} -- "); // UI will freez when call directly
+  });*/
 
-  // useSpawn(postUseCase);
+   useSpawn(postUseCase);
   // useCompute();
 }
 
 useCompute() async {
-  await compute(runHeavyTask, 100000000).then((value) {
+  await compute(runHeavyTask, 1000000).then((value) {
     Logger.log("RESULT", "--SUM: $value ----");
   });
 }

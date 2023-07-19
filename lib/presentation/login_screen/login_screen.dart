@@ -7,7 +7,7 @@ import '../../core/theme/app_style.dart';
 import '../../core/theme/color_constant.dart';
 import '../../core/utils/common_util.dart';
 import '../../core/utils/image_constant.dart';
-import '../../core/utils/responsive.dart';
+import '../../core/utils/responsive_ui.dart';
 import '../../core/utils/size_utils.dart';
 
 import '../../data/model/login/login_request.dart';
@@ -29,7 +29,7 @@ class LoginScreen extends GetWidget<LoginController> {
         body: Responsive(
           mobile: mobileLoginView(),
           desktop: webLoginView(),
-          //tablet: body(),
+          tablet: mobileLoginView(),
         ),
       ),
     );

@@ -1,4 +1,4 @@
-import '../../config.dart' show environmentalHost;
+import '../../config.dart' show environmentHost;
 /*
  * Copyright (c) 2021, Vipin.
  */
@@ -7,10 +7,11 @@ import '../../config.dart' show environmentalHost;
 class NetworkKeys {
   NetworkKeys._();
 
-  static String base_url = environmentalHost[StringKeys.base_url] ?? "";
+  static String base_url = environmentHost[StringKeys.base_url] ?? "";
 
   static const String login = '/auth/login';
   static const String products = '/products';
+
 
 }
 
@@ -22,6 +23,8 @@ class StringKeys {
   static const String server_error = 'server_error';
   static const String base_url = 'BASE_URL';
   static const String api_key = 'API_KEY';
+  static const String firebaseKey = 'FIREBASE_KEY';
+
 }
 
 

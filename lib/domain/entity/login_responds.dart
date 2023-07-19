@@ -1,8 +1,10 @@
 
-import 'package:json_annotation/json_annotation.dart';
-part 'login_responds.g.dart';
+import 'dart:convert';
 
-@JsonSerializable()
+LoginResponds loginRespondsFromJson(String str) => LoginResponds.fromJson(json.decode(str));
+
+String loginRespondsToJson(LoginResponds data) => json.encode(data.toJson());
+
 class LoginResponds {
   int? id;
   String? username;
@@ -13,19 +15,36 @@ class LoginResponds {
   String? image;
   String? token;
 
-  LoginResponds(
-      {this.id,
-      this.username,
-      this.lastName,
-      this.email,
-      this.firstName,
-      this.gender,
-      this.image,
-      this.token});
+  LoginResponds({
+    this.id,
+    this.username,
+    this.email,
+    this.firstName,
+    this.lastName,
+    this.gender,
+    this.image,
+    this.token,
+  });
 
-  factory LoginResponds.fomJson(Map<String,dynamic> json)=>_$LoginRespondsFromJson(json);
+  factory LoginResponds.fromJson(Map<String, dynamic> json) => LoginResponds(
+    id: json["id"],
+    username: json["username"],
+    email: json["email"],
+    firstName: json["firstName"],
+    lastName: json["lastName"],
+    gender: json["gender"],
+    image: json["image"],
+    token: json["token"],
+  );
 
-  Map<String, dynamic> toJson(LoginResponds movie)=>_$LoginRespondsToJson(this);
-
-
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "username": username,
+    "email": email,
+    "firstName": firstName,
+    "lastName": lastName,
+    "gender": gender,
+    "image": image,
+    "token": token,
+  };
 }

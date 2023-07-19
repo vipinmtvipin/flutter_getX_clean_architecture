@@ -2,7 +2,8 @@ import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../core/theme/color_constant.dart';
 import '../../core/utils/image_constant.dart';
-import '../../core/utils/responsive.dart';
+
+import '../../core/utils/responsive_ui.dart';
 import '../../core/utils/size_utils.dart';
 import '../common_widgets/custom_image_view.dart';
 import 'controller/splash_controller.dart';
@@ -20,6 +21,7 @@ class SplashScreen extends GetWidget<SplashController> {
         body: Responsive(
           mobile: mobileSplashView(),
           desktop: webSplashView(),
+          tablet: mobileSplashView(),
           //tablet: body(),
         ),
       ),

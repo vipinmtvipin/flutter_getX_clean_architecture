@@ -8,6 +8,7 @@ import '../../core/utils/logger.dart';
 /// this class available for entire app life time same life cycle of GetxController
 class CommonService extends GetxService {
 
+
   @override
   void onInit() {
     super.onInit();

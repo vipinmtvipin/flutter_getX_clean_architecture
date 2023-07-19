@@ -15,7 +15,6 @@ class InitialBindings extends Bindings {
   void dependencies() {
 
     Get.lazyPut(() => CommonService());
-
     Get.lazyPut(() => LoginRepositoryIml());
 
   }

@@ -11,6 +11,6 @@ class HomeBinding extends Bindings {
   void dependencies() {
     Get.lazyPut(() => HomeRepositoryIml());
     Get.lazyPut(() => HomeUseCaseForGetPosts(Get.find<HomeRepositoryIml>()));
-    Get.lazyPut(() => HomeController(Get.find() ));
+    Get.lazyPut(() => HomeController(Get.find(),),fenix: true); ///It will still delete the dependencies, but it will be able to re-initialize them, when the route is back in stack.
   }
 }

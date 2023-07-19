@@ -11,7 +11,7 @@ class MockLoginRepository extends LoginRepository {
     final file = File('test/data/login_data_sample.json');
     final response = await file.readAsString();
     final data = await json.decode(response);
-    return LoginResponds.fomJson(data);
+    return LoginResponds.fromJson(data);
   }
 
  /* @override

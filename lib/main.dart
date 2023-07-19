@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -5,13 +7,13 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'core/constants/constants.dart';
 import 'core/localization/app_localization.dart';
 import 'core/routes/app_routes.dart';
 import 'core/theme/themes.dart';
 import 'core/utils/initial_bindings.dart';
 import 'core/utils/logger.dart';
 import 'core/utils/resource_string.dart';
-import './config.dart' show environmentalHost;
 
 void main() async {
 
@@ -19,7 +21,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  Logger.log("ENVIRONMENT", "-***<<<-- ${environmentalHost['API_KEY']} --*>>>**-");
+  const env =  String.fromEnvironment("ENVIRONMENT", defaultValue: "production");
+  Logger.log("ENVIRONMENT", "<<<<-- $env -->>>>");
+
 
   /** init the local session storage**/
   await GetStorage.init();

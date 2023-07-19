@@ -9,7 +9,8 @@ import '../../core/theme/app_style.dart';
 import '../../core/theme/color_constant.dart';
 
 import '../../core/utils/image_constant.dart';
-import '../../core/utils/responsive.dart';
+
+import '../../core/utils/responsive_ui.dart';
 import '../../core/utils/size_utils.dart';
 
 import 'package:flutter/material.dart';
@@ -23,11 +24,12 @@ import '../common_widgets/ripple.dart';
 class HomeScreen extends GetWidget<HomeController> {
   const HomeScreen({super.key});
 
+  @override
   Widget build(BuildContext context) {
     return Responsive(
       mobile: mobileHomeView(),
       desktop: webHomeView(),
-      //tablet: body(),
+      tablet: mobileHomeView(),
     );
   }
 

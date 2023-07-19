@@ -1,29 +1,59 @@
 import 'dart:collection';
+import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-
 import 'core/constants/constants.dart';
 
-Map<String, String> get environmentalHost {
-  bool isProd =  kReleaseMode;  // const bool.fromEnvironment('dart.vm.product');
-  final Map<String, String> env = HashMap();
-  if (isProd) {
-    // replace with your production API endpoint
-    env.addAll(
-        {
-          StringKeys.base_url: 'https://dummyjson.com',
-          StringKeys.api_key: 'Production_Key',
-        }
-    );
-    return env;
-  }
+Map<String, String> get environmentHost {
+  //  bool isProd =  kReleaseMode;
 
-  // replace with your own development API endpoint
-  env.addAll(
+  /// use this command to run the application
+  // flutter run --dart-define=ENVIRONMENT=staging
+  //  flutter run --release --dart-define=ENVIRONMENT=production
+
+  const env = String.fromEnvironment("ENVIRONMENT", defaultValue: "production");
+
+  final Map<String, String> currentEnv = HashMap();
+
+  switch (env) {
+    case 'production':
       {
-        StringKeys.base_url: 'https://dummyjson.com',
-        StringKeys.api_key: 'Development_Key',
+        // replace with your production API endpoint
+        currentEnv.addAll({
+          StringKeys.base_url: 'https://dummyjson.com',
+          StringKeys.api_key: 'production_key',
+          StringKeys.firebaseKey: 'firebase_key',
+        });
       }
-  );
-  return env;
+      break;
+
+    case 'staging':
+      {
+        currentEnv.addAll({
+          StringKeys.base_url: 'https://dummyjson.com',
+          StringKeys.api_key: 'staging_key',
+          StringKeys.firebaseKey: 'firebase_key',
+        });
+      }
+      break;
+    case 'development':
+      {
+        currentEnv.addAll({
+          StringKeys.base_url: 'https://dummyjson.com',
+          StringKeys.api_key: 'development_key',
+          StringKeys.firebaseKey: 'firebase_key',
+        });
+      }
+      break;
+    default:
+      {
+        currentEnv.addAll({
+          StringKeys.base_url: 'https://dummyjson.com',
+          StringKeys.api_key: 'production_key',
+          StringKeys.firebaseKey: 'firebase_key',
+        });
+      }
+      break;
+  }
+  return currentEnv;
 }
