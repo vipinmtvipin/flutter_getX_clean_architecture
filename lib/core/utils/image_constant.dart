@@ -7,5 +7,4 @@ class ImageConstant {
   static String imgAirplane = 'assets/images/img_airplane.svg';
 
 
-
 }

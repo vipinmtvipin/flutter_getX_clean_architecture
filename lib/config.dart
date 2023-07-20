@@ -8,7 +8,7 @@ Map<String, String> get environmentHost {
   //  bool isProd =  kReleaseMode;
 
   /// use this command to run the application
-  // flutter run --dart-define=ENVIRONMENT=staging
+  //  flutter run --dart-define=ENVIRONMENT=staging
   //  flutter run --release --dart-define=ENVIRONMENT=production
 
   const env = String.fromEnvironment("ENVIRONMENT", defaultValue: "production");

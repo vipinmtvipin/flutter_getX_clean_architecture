@@ -19,7 +19,7 @@ class AppRoutes {
   static List<GetPage> pages = [
     GetPage(
       name: splashScreen,
-      page: () => const SplashScreen(),
+      page: () => SplashScreen(),
       bindings: [
         SplashBinding(),
       ],
@@ -27,7 +27,7 @@ class AppRoutes {
 
     GetPage(
       name: loginScreen,
-      page: () => const LoginScreen(),
+      page: () =>  LoginScreen(),
       bindings: [
         LoginBinding(),
       ],
@@ -43,7 +43,7 @@ class AppRoutes {
 
     GetPage(
       name: initialRoute,
-      page: () => const SplashScreen(),
+      page: () =>  SplashScreen(),
       bindings: [
         SplashBinding(),
       ],

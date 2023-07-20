@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 
 import '../../core/theme/color_constant.dart';
@@ -10,50 +11,52 @@ import 'controller/splash_controller.dart';
 import 'package:flutter/material.dart';
 
 
-class SplashScreen extends GetWidget<SplashController> {
-  const SplashScreen({super.key});
+class SplashScreen extends GetResponsiveView<SplashController> {
+   SplashScreen({super.key});
+   var splashController = Get.find<SplashController>();
+
+@override
+  Widget? phone() {
+  return buildSplash();
+  }
 
   @override
-  Widget build(BuildContext context) {
+  Widget? desktop() {
+    return buildSplash();
+  }
+
+  @override
+  Widget? tablet() {
+    return buildSplash();
+  }
+
+  @override
+  Widget? watch() {
+    return buildSplash();
+  }
+
+
+  Widget buildSplash() {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorConstant.lightBlue,
-        body: Responsive(
-          mobile: mobileSplashView(),
-          desktop: webSplashView(),
-          tablet: mobileSplashView(),
-          //tablet: body(),
-        ),
+        backgroundColor: screen.responsiveValue(
+                         desktop: ColorConstant.light_gray,
+                         tablet: ColorConstant.light_green,
+                         mobile: ColorConstant.light_green,
+                         watch: ColorConstant.white_light),
+        body: splashView()
       ),
     );
   }
 
-  Widget mobileSplashView() {
-    return SizedBox(
-        width: double.maxFinite,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomImageView(
-                  svgPath: ImageConstant.imgHome,
-                  height: getSize(72),
-                  width: getSize(72),
-                  margin: getMargin(bottom: 5))
-            ]));
-  }
-
-  Widget webSplashView() {
-    return SizedBox(
-        width: double.maxFinite,
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CustomImageView(
-                  svgPath: ImageConstant.imgHome,
-                  height: getSize(52),
-                  width: getSize(82),
-                  margin: const EdgeInsets.all(10),)
-            ]));
+  Widget splashView() {
+    return Center(
+      child: CustomImageView(
+          svgPath: ImageConstant.imgHome,
+          height: getSize(70),
+          width:  getSize(70),
+          margin: getMargin(all: 5)),
+    );
   }
 
 }

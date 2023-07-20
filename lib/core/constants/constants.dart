@@ -7,7 +7,7 @@ import '../../config.dart' show environmentHost;
 class NetworkKeys {
   NetworkKeys._();
 
-  static String base_url = environmentHost[StringKeys.base_url] ?? "";
+  static String base_url = environmentHost[StringKeys.base_url]!;
 
   static const String login = '/auth/login';
   static const String products = '/products';

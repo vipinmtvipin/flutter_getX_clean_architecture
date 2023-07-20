@@ -1,11 +1,8 @@
-/*
- * Copyright (c) 2021, Vipin.
- */
+
 
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
-
 
 
 class DeviceInfo {
