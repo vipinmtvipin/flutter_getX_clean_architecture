@@ -94,7 +94,7 @@ class CustomSearchView extends StatelessWidget {
     switch (fontStyle) {
       case SearchViewFontStyle.PoppinsBold12Indigo90087:
         return TextStyle(
-          color: ColorConstant.indigo,
+          color: AppColors.indigo,
           fontSize: getFontSize(
             12,
           ),
@@ -106,7 +106,7 @@ class CustomSearchView extends StatelessWidget {
         );
       default:
         return TextStyle(
-          color: ColorConstant.blueGray,
+          color: AppColors.blueGray,
           fontSize: getFontSize(
             12,
           ),
@@ -136,7 +136,7 @@ class CustomSearchView extends StatelessWidget {
         return OutlineInputBorder(
           borderRadius: _setOutlineBorderRadius(),
           borderSide: BorderSide(
-            color: ColorConstant.lightBlue,
+            color: AppColors.lightBlue,
             width: 1,
           ),
         );
@@ -146,7 +146,7 @@ class CustomSearchView extends StatelessWidget {
         return OutlineInputBorder(
           borderRadius: _setOutlineBorderRadius(),
           borderSide: BorderSide(
-            color: ColorConstant.blue50,
+            color: AppColors.blue50,
             width: 1,
           ),
         );

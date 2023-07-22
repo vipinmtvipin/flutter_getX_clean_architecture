@@ -40,10 +40,10 @@ class SplashScreen extends GetResponsiveView<SplashController> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: screen.responsiveValue(
-                         desktop: ColorConstant.light_gray,
-                         tablet: ColorConstant.light_green,
-                         mobile: ColorConstant.light_green,
-                         watch: ColorConstant.white_light),
+                         desktop: AppColors.lightGreen,
+                         tablet: AppColors.lightBlue,
+                         mobile: AppColors.lightGreen,
+                         watch: AppColors.lightFont),
         body: splashView()
       ),
     );

@@ -1,14 +1,10 @@
-/*
- * Copyright (c) 2021, Vipin.
- */
-
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:getx_clean_template_vip/core/utils/logger.dart';
 import 'package:intl/intl.dart';
 
-enum DeviceCategory { Phone, Tablet }
+import 'logger.dart';
+
 
 class CommonUtil {
 
@@ -24,7 +20,6 @@ class CommonUtil {
 
    void keyboardHide(BuildContext context) {
     try {
-      // keyboard on the screen
         FocusScope.of(context).requestFocus(FocusNode()); // not refocus to textview
         /// hides the keyboard if its already open
         //FocusScope.of(context).unfocus();  //  refocus to textview
@@ -33,7 +28,7 @@ class CommonUtil {
 
   String currentDate(String from) {
     var now =  DateTime.now();
-    var date;
+    String date;
     if(from == "revers") {
       date =  DateFormat("yyyy-MM-dd").format(now);
     } else {
@@ -59,53 +54,30 @@ class CommonUtil {
 
   String dateFormater(String data) {
     try {
-         Logger.log("Tag","************dateFormat2:  $data--------");
       DateTime parseDate = DateFormat('yyyy-MM-dd HH:mm:ss').parse(data);
       var inputDate = DateTime.parse(parseDate.toString());
       var outputFormat = DateFormat('dd MMM yyyy');
       var outputDate = outputFormat.format(inputDate);
 
-         Logger.log("Tag","************dateFormat2:  ${outputDate.toString()}--------");
       return outputDate.toString();
     }catch(e){
       return data;
     }
   }
 
-  String dateFormaterCoupon(String data) {
-    try {
-         Logger.log("Tag","************dateFormat2:  $data--------");
-      DateTime parseDate = DateFormat('yyyy-MM-dd HH:mm:ss').parse(data);
-      var inputDate = DateTime.parse(parseDate.toString());
-      var outputFormat = DateFormat('dd.MM.yyyy');
-      var outputDate = outputFormat.format(inputDate);
-
-         Logger.log("Tag","************dateFormat2:  ${outputDate.toString()}--------");
-      return outputDate.toString();
-    }catch(e){
-      return data;
-    }
-  }
 
   String dateFormaterTime(String data) {
     try {
-         Logger.log("Tag","************dateFormat2:  $data--------");
       DateTime parseDate = DateFormat('yyyy-MM-dd HH:mm:ss').parse(data);
       var inputDate = DateTime.parse(parseDate.toString());
       var outputFormat = DateFormat('hh:mm a');
       var outputDate = outputFormat.format(inputDate);
 
-         Logger.log("Tag","************dateFormat2:  ${outputDate.toString()}--------");
       return outputDate.toString();
     }catch(e){
       return data;
     }
   }
-
-  DeviceCategory getDeviceType()  {
-  final data =  MediaQueryData.fromWindow(WidgetsBinding.instance!.window);
-  return data.size.shortestSide < 600 ? DeviceCategory.Phone : DeviceCategory.Tablet;
-}
 
 
   /// accepts a double [scale] and returns scaled sized based on the screen
@@ -115,7 +87,6 @@ class CommonUtil {
           (MediaQuery.of(context).orientation == Orientation.portrait
               ? MediaQuery.of(context).size.width
               : MediaQuery.of(context).size.height);
-
 
   /// accepts a double [scale] and returns scaled sized based on the screen
   /// width

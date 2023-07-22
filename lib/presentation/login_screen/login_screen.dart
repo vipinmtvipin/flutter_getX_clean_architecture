@@ -25,7 +25,7 @@ class LoginScreen extends GetWidget<LoginController> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorConstant.lightBlue,
+        backgroundColor: AppColors.lightBlue,
         body: Responsive(
           mobile: mobileLoginView(),
           desktop: webLoginView(),
@@ -99,7 +99,7 @@ class LoginScreen extends GetWidget<LoginController> {
                               margin: getMargin(
                                   left: 16, top: 12, right: 10, bottom: 12),
                               child: CustomImageView(
-                                  svgPath: ImageConstant.imgAirplane)),
+                                  svgPath: ImageConstant.imgHome)),
                           prefixConstraints:
                               BoxConstraints(maxHeight: getVerticalSize(48)),
                           isObscureText: true),
@@ -123,7 +123,7 @@ class LoginScreen extends GetWidget<LoginController> {
                                         child: Divider(
                                             height: getVerticalSize(1),
                                             thickness: getVerticalSize(1),
-                                            color: ColorConstant.blue50))),
+                                            color: AppColors.blue50))),
                                 Text("lbl_or".tr,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.left,
@@ -137,7 +137,7 @@ class LoginScreen extends GetWidget<LoginController> {
                                         child: Divider(
                                             height: getVerticalSize(1),
                                             thickness: getVerticalSize(1),
-                                            color: ColorConstant.blue50)))
+                                            color: AppColors.blue50)))
                               ])),
                       Padding(
                           padding: getPadding(top: 17),
@@ -157,7 +157,7 @@ class LoginScreen extends GetWidget<LoginController> {
                                     TextSpan(
                                         text: "msg_don_t_have_an_a".tr,
                                         style: TextStyle(
-                                            color: ColorConstant.blueGray,
+                                            color: AppColors.blueGray,
                                             fontSize: getFontSize(12),
                                             fontFamily: 'Poppins',
                                             fontWeight: FontWeight.w400,
@@ -166,7 +166,7 @@ class LoginScreen extends GetWidget<LoginController> {
                                     TextSpan(
                                         text: " ",
                                         style: TextStyle(
-                                            color: ColorConstant.indigo,
+                                            color: AppColors.indigo,
                                             fontSize: getFontSize(12),
                                             fontFamily: 'Poppins',
                                             fontWeight: FontWeight.w700,
@@ -175,7 +175,7 @@ class LoginScreen extends GetWidget<LoginController> {
                                     TextSpan(
                                         text: "lbl_register".tr,
                                         style: TextStyle(
-                                            color: ColorConstant.sky_blue,
+                                            color: AppColors.skyBlue,
                                             fontSize: getFontSize(12),
                                             fontFamily: 'Poppins',
                                             fontWeight: FontWeight.w700,
@@ -184,10 +184,15 @@ class LoginScreen extends GetWidget<LoginController> {
                                   ]),
                                   textAlign: TextAlign.left)))
                     ])),
+
+
           ),
         );
       },
-    ));
+    )
+
+
+    );
   }
 
   Widget webLoginView() {
@@ -242,7 +247,7 @@ class LoginScreen extends GetWidget<LoginController> {
                 textInputType: TextInputType.visiblePassword,
                 prefix: Container(
                     margin: getMargin(left: 16, top: 12, right: 10, bottom: 12),
-                    child: CustomImageView(svgPath: ImageConstant.imgAirplane)),
+                    child: CustomImageView(svgPath: ImageConstant.imgHome)),
                 prefixConstraints:
                     BoxConstraints(maxHeight: getVerticalSize(48)),
                 isObscureText: true),
@@ -265,7 +270,7 @@ class LoginScreen extends GetWidget<LoginController> {
                               child: Divider(
                                   height: getVerticalSize(1),
                                   thickness: getVerticalSize(1),
-                                  color: ColorConstant.blue50))),
+                                  color: AppColors.blue50))),
                       Text("lbl_or".tr,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.left,
@@ -278,7 +283,7 @@ class LoginScreen extends GetWidget<LoginController> {
                               child: Divider(
                                   height: getVerticalSize(1),
                                   thickness: getVerticalSize(1),
-                                  color: ColorConstant.blue50)))
+                                  color: AppColors.blue50)))
                     ])),
             Padding(
                 padding: getPadding(top: 17),
@@ -298,7 +303,7 @@ class LoginScreen extends GetWidget<LoginController> {
                           TextSpan(
                               text: "msg_don_t_have_an_a".tr,
                               style: TextStyle(
-                                  color: ColorConstant.blueGray,
+                                  color: AppColors.blueGray,
                                   fontSize: getFontSize(12),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w400,
@@ -306,7 +311,7 @@ class LoginScreen extends GetWidget<LoginController> {
                           TextSpan(
                               text: " ",
                               style: TextStyle(
-                                  color: ColorConstant.indigo,
+                                  color: AppColors.indigo,
                                   fontSize: getFontSize(12),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w700,
@@ -314,7 +319,7 @@ class LoginScreen extends GetWidget<LoginController> {
                           TextSpan(
                               text: "lbl_register".tr,
                               style: TextStyle(
-                                  color: ColorConstant.lightBlue,
+                                  color: AppColors.lightBlue,
                                   fontSize: getFontSize(12),
                                   fontFamily: 'Poppins',
                                   fontWeight: FontWeight.w700,
@@ -331,6 +336,6 @@ class LoginScreen extends GetWidget<LoginController> {
 
   onTapTxtDonthaveanacc() {
     controller.showSnackBar(
-        "Sign up", "Clicked for registration", ColorConstant.light_gray);
+        "Sign up", "Clicked for registration", AppColors.lightFont);
   }
 }

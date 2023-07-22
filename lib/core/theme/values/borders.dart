@@ -1,16 +1,19 @@
 
 import 'package:flutter/material.dart';
 
+import '../color_constant.dart';
+
+
 
 class Borders {
   static const BorderSide primaryBorder = BorderSide(
-    color: Color.fromARGB(255, 112, 112, 112),
-    width: 0.33333,
+    color: AppColors.skyBlue,
+    width: 0.3,
     style: BorderStyle.solid,
   );
   static const BorderSide secondaryBorder = BorderSide(
-    color: Color.fromARGB(255, 138, 152, 186),
-    width: 0.33333,
+    color: AppColors.black,
+    width: 0.3,
     style: BorderStyle.solid,
   );
 }

@@ -1,6 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../color_constant.dart';
+
+
 class Gradients {
+
+  static const Gradient meralcoBackgroundGradient = LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [
+        Color(AppColors.mainColorInt),
+        Color(AppColors.secondaryColorInt),
+      ]);
+
+
   static const Gradient primaryGradient = LinearGradient(
     begin: Alignment(0.5, 1),
     end: Alignment(0.51711, -0.06443),
@@ -26,18 +39,7 @@ class Gradients {
     ],
   );
 
-  static const Gradient secondaryGradient2 = LinearGradient(
-    begin: Alignment(0, 1.0),
-    end: Alignment(1.0, 0.5),
-    stops: [
-      0,
-      1,
-    ],
-    colors: [
-      Color.fromARGB(255, 255, 174, 139),
-      Color.fromARGB(255, 255, 150, 159),
-    ],
-  );
+
   static const Gradient fullScreenOverGradient = LinearGradient(
     begin: Alignment(0.51436, 1.07565),
     end: Alignment(0.51436, -0.03208),
@@ -53,34 +55,6 @@ class Gradients {
     ],
   );
 
-  static const Gradient footerOverlayGradient = LinearGradient(
-    begin: Alignment(0.51436, 1.07565),
-    end: Alignment(0.51436, -0.03208),
-    stops: [
-      0,
-      0.17571,
-      1,
-    ],
-    colors: [
-      Color.fromARGB(255, 0, 0, 0),
-      Color.fromARGB(255, 8, 8, 8),
-      Color.fromARGB(105, 45, 45, 45),
-    ],
-  );
-
-  static const Gradient restaurantDetailsGradient = LinearGradient(
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-    colors: [
-      Color.fromRGBO(0, 0, 0, 0.39),
-      Color.fromRGBO(255, 255, 255, 0),
-      Color.fromRGBO(0, 0, 0, 0.43),
-//      Color.fromARGB(105, 45, 45, 45),
-//      Color(0x00000000),
-//      Color(0xFFFFFFff),
-//      Color(0x0000006E),
-    ],
-  );
   static const Gradient italianGradient = LinearGradient(
     colors: [
       Color(0xFFFF5673),

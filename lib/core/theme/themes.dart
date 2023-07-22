@@ -4,8 +4,6 @@ class Themes {
 
   static final light = ThemeData.light().copyWith(
     visualDensity: VisualDensity.standard,
-    backgroundColor: Colors.white,
-    bottomAppBarColor: Colors.cyan,
     appBarTheme: const AppBarTheme(
         backgroundColor: Colors.cyan,
         // This will be applied to the "back" icon
@@ -21,8 +19,6 @@ class Themes {
     ),
   );
   static final dark = ThemeData.dark().copyWith(
-    backgroundColor: Colors.black,
-    bottomAppBarColor: Colors.deepPurple,
     appBarTheme: const AppBarTheme(
         backgroundColor: Colors.deepPurple,
         // This will be applied to the "back" icon

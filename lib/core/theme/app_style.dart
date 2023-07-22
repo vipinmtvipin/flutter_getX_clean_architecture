@@ -7,7 +7,7 @@ import '../utils/size_utils.dart';
 class AppStyle {
 
   static TextStyle txtPoppinsBold16 = TextStyle(
-    color: ColorConstant.font_color,
+    color: AppColors.fontColor,
     fontSize: getFontSize(
       16,
     ),
@@ -17,7 +17,7 @@ class AppStyle {
 
 
   static TextStyle txtPoppinsBold20Lightblue = TextStyle(
-    color: ColorConstant.lightBlue,
+    color: AppColors.lightBlue,
     fontSize: getFontSize(
       20,
     ),
@@ -27,7 +27,7 @@ class AppStyle {
 
 
   static TextStyle txtPoppinsBold10 = TextStyle(
-    color: ColorConstant.pink,
+    color: AppColors.pink,
     fontSize: getFontSize(
       10,
     ),
@@ -36,7 +36,7 @@ class AppStyle {
   );
 
   static TextStyle txtPoppinsBold12 = TextStyle(
-    color: ColorConstant.font_color,
+    color: AppColors.fontColor,
     fontSize: getFontSize(
       12,
     ),
@@ -45,7 +45,7 @@ class AppStyle {
   );
 
   static TextStyle txtPoppinsRegular12White = TextStyle(
-    color: ColorConstant.white,
+    color: AppColors.white,
     fontSize: getFontSize(
       12,
     ),
@@ -54,7 +54,7 @@ class AppStyle {
   );
 
   static TextStyle txtPoppinsBold14 = TextStyle(
-    color: ColorConstant.font_color,
+    color: AppColors.fontColor,
     fontSize: getFontSize(
       14,
     ),
@@ -65,7 +65,7 @@ class AppStyle {
 
 
   static TextStyle txtPoppinsRegular10 = TextStyle(
-    color: ColorConstant.font_color,
+    color: AppColors.fontColor,
     fontSize: getFontSize(
       10,
     ),
@@ -74,7 +74,7 @@ class AppStyle {
   );
 
   static TextStyle txtPoppinsRegular12 = TextStyle(
-    color: ColorConstant.white,
+    color: AppColors.white,
     fontSize: getFontSize(
       12,
     ),
@@ -83,7 +83,7 @@ class AppStyle {
   );
 
   static TextStyle txtRobotoRegular20 = TextStyle(
-    color: ColorConstant.font_color,
+    color: AppColors.fontColor,
     fontSize: getFontSize(
       20,
     ),
@@ -94,7 +94,7 @@ class AppStyle {
 
 
   static TextStyle txtPoppinsBold10White= TextStyle(
-    color: ColorConstant.white,
+    color: AppColors.white,
     fontSize: getFontSize(
       10,
     ),
@@ -104,7 +104,7 @@ class AppStyle {
 
 
   static TextStyle txtPoppinsBold14White = TextStyle(
-    color: ColorConstant.white,
+    color: AppColors.white,
     fontSize: getFontSize(
       14,
     ),
@@ -113,7 +113,7 @@ class AppStyle {
   );
 
   static TextStyle txtRobotoRegular16 = TextStyle(
-    color: ColorConstant.font_color,
+    color: AppColors.fontColor,
     fontSize: getFontSize(
       16,
     ),

@@ -114,9 +114,9 @@ class CustomButton extends StatelessWidget {
   _setColor() {
     switch (variant) {
       case ButtonVariant.FillLightblue:
-        return ColorConstant.sky_blue;
+        return AppColors.skyBlue;
       default:
-        return ColorConstant.lightBlue;
+        return AppColors.lightBlue;
     }
   }
 
@@ -125,7 +125,7 @@ class CustomButton extends StatelessWidget {
       case ButtonVariant.FillLightblue:
         return null;
       default:
-        return ColorConstant.lightBlue;
+        return AppColors.lightBlue;
     }
   }
 
@@ -169,7 +169,7 @@ class CustomButton extends StatelessWidget {
     switch (fontStyle) {
       case ButtonFontStyle.PoppinsBold12White:
         return TextStyle(
-          color: ColorConstant.white,
+          color: AppColors.white,
           fontSize: getFontSize(
             12,
           ),
@@ -181,7 +181,7 @@ class CustomButton extends StatelessWidget {
         );
       default:
         return TextStyle(
-          color: ColorConstant.white,
+          color: AppColors.white,
           fontSize: getFontSize(
             14,
           ),

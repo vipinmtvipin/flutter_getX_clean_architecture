@@ -37,8 +37,8 @@ class HomeScreen extends GetWidget<HomeController> {
     return SafeArea(
         child: Scaffold(
             backgroundColor: Get.isDarkMode
-                ? ColorConstant.light_gray
-                : ColorConstant.white_gray,
+                ? AppColors.lightFont
+                : AppColors.lightGreen,
             appBar: CustomAppBar(
                 height: getVerticalSize(66),
                 leadingWidth: 30,
@@ -46,7 +46,7 @@ class HomeScreen extends GetWidget<HomeController> {
                   iconSize: 24,
                   icon: const Icon(
                     Icons.arrow_back_ios_new,
-                    color: ColorConstant.sky_blue,
+                    color: AppColors.black,
                   ),
                   onPressed: () {
                     Get.back();
@@ -67,7 +67,7 @@ class HomeScreen extends GetWidget<HomeController> {
                   AppbarImage(
                       height: getSize(24),
                       width: getSize(24),
-                      svgPath: ImageConstant.imgAirplane,
+                      svgPath: ImageConstant.imgHome,
                       margin:
                           getMargin(left: 13, top: 15, right: 13, bottom: 16),
                       onTap: () {
@@ -99,7 +99,7 @@ class HomeScreen extends GetWidget<HomeController> {
                       const Padding(
                         padding: EdgeInsets.all(8.0),
                         child: CircularProgressIndicator(
-                          color: ColorConstant.orange,
+                          color: AppColors.orange,
                           strokeWidth: 2,
                         ),
                       ),

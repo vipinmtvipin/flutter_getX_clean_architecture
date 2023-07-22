@@ -11,6 +11,7 @@ import 'core/constants/constants.dart';
 import 'core/localization/app_localization.dart';
 import 'core/routes/app_routes.dart';
 import 'core/theme/themes.dart';
+import 'core/utils/device_type.dart';
 import 'core/utils/initial_bindings.dart';
 import 'core/utils/logger.dart';
 import 'core/utils/resource_string.dart';
@@ -28,16 +29,29 @@ void main() async {
   /** init the local session storage**/
   await GetStorage.init();
   /** load resource strings **/
-  ResourceString();
+  await ResourceString.init();
 
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-  ]).then((value) {
+  config().then((value) {
     Logger.init(kReleaseMode ? LogMode.live : LogMode.debug);
     runApp(MyApp());
   });
+
   FlutterNativeSplash.remove();
 }
+
+
+Future config() async {
+  /** set device orientation**/
+  if (Device.get().isTablet) {
+    //for Tablet
+    await SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
+  } else  {
+    await SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  }
+}
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

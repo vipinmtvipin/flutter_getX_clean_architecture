@@ -31,7 +31,7 @@ class AppbarTitle extends StatelessWidget {
             letterSpacing: getHorizontalSize(
               0.5,
             ),
-            color: ColorConstant.indigo,
+            color: AppColors.indigo,
           ),
         ),
       ),

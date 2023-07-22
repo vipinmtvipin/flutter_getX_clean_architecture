@@ -100,11 +100,11 @@ class CustomIconButton extends StatelessWidget {
   _setColor() {
     switch (variant) {
       case IconButtonVariant.FillLightblueA200:
-        return ColorConstant.lightBlue;
+        return AppColors.lightBlue;
       case IconButtonVariant.OutlineLightblueA2003d:
-        return ColorConstant.lightBlue;
+        return AppColors.lightBlue;
       default:
-        return ColorConstant.white;
+        return AppColors.white;
     }
   }
 
@@ -115,7 +115,7 @@ class CustomIconButton extends StatelessWidget {
         return null;
       default:
         return Border.all(
-          color: ColorConstant.blue50,
+          color: AppColors.blue50,
           width: getHorizontalSize(
             1.00,
           ),
@@ -151,7 +151,7 @@ class CustomIconButton extends StatelessWidget {
       case IconButtonVariant.OutlineLightblueA2003d:
         return [
           BoxShadow(
-            color: ColorConstant.lightBlue,
+            color: AppColors.lightBlue,
             spreadRadius: getHorizontalSize(
               2.00,
             ),

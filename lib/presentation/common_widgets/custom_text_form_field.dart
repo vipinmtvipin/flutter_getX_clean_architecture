@@ -115,7 +115,7 @@ class CustomTextFormField extends StatelessWidget {
     switch (fontStyle) {
       case TextFormFieldFontStyle.PoppinsBold12Bluegray300:
         return TextStyle(
-          color: ColorConstant.blueGray,
+          color: AppColors.blueGray,
           fontSize: getFontSize(
             12,
           ),
@@ -127,7 +127,7 @@ class CustomTextFormField extends StatelessWidget {
         );
       case TextFormFieldFontStyle.PoppinsSemiBold12Bluegray300:
         return TextStyle(
-          color: ColorConstant.blueGray,
+          color: AppColors.blueGray,
           fontSize: getFontSize(
             12,
           ),
@@ -139,7 +139,7 @@ class CustomTextFormField extends StatelessWidget {
         );
       default:
         return TextStyle(
-          color: ColorConstant.blueGray,
+          color: AppColors.blueGray,
           fontSize: getFontSize(
             12,
           ),
@@ -169,7 +169,7 @@ class CustomTextFormField extends StatelessWidget {
         return OutlineInputBorder(
           borderRadius: _setOutlineBorderRadius(),
           borderSide: BorderSide(
-            color: ColorConstant.blue50,
+            color: AppColors.blue50,
             width: 1,
           ),
         );
@@ -179,7 +179,7 @@ class CustomTextFormField extends StatelessWidget {
         return OutlineInputBorder(
           borderRadius: _setOutlineBorderRadius(),
           borderSide: BorderSide(
-            color: ColorConstant.blue50,
+            color: AppColors.blue50,
             width: 1,
           ),
         );
@@ -189,7 +189,7 @@ class CustomTextFormField extends StatelessWidget {
   _setFillColor() {
     switch (variant) {
       default:
-        return ColorConstant.white;
+        return AppColors.white;
     }
   }
 

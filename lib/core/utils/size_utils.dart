@@ -1,16 +1,14 @@
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-// This is where the magic happens.
-// This functions are responsible to make UI responsive across all the mobile devices.
 
 Size size = WidgetsBinding.instance.window.physicalSize /
     WidgetsBinding.instance.window.devicePixelRatio;
 
-// Caution! If you think these are static values and are used to build a static UI,  you mustn’t.
-// These are used in the code as a reference to create your UI Responsively.
-const num DESIGN_WIDTH = 375;
-const num DESIGN_HEIGHT = 812;
-const num DESIGN_STATUS_BAR = 44;
+ num designWidth =  kIsWeb ? 1000 : 375;
+ num designHeight = kIsWeb ? 850 : 812;
+ num designStatusBar = kIsWeb ? 45 : 44;
 
 ///This method is used to get device viewport width.
 get width {
@@ -20,8 +18,8 @@ get width {
 ///This method is used to get device viewport height.
 get height {
   num statusBar =
-      MediaQueryData.fromWindow(WidgetsBinding.instance.window).viewPadding.top;
-  num bottomBar = MediaQueryData.fromWindow(WidgetsBinding.instance.window)
+      MediaQueryData.fromView(WidgetsBinding.instance.window).viewPadding.top;
+  num bottomBar = MediaQueryData.fromView(WidgetsBinding.instance.window)
       .viewPadding
       .bottom;
   num screenHeight = size.height - statusBar - bottomBar;
@@ -30,12 +28,12 @@ get height {
 
 ///This method is used to set padding/margin (for the left and Right side) & width of the screen or widget according to the Viewport width.
 double getHorizontalSize(double px) {
-  return ((px * width) / DESIGN_WIDTH);
+  return ((px * width) / designWidth);
 }
 
 ///This method is used to set padding/margin (for the top and bottom side) & height of the screen or widget according to the Viewport height.
 double getVerticalSize(double px) {
-  return ((px * height) / (DESIGN_HEIGHT - DESIGN_STATUS_BAR));
+  return ((px * height) / (designHeight - designStatusBar));
 }
 
 ///This method is used to set smallest px in image height and width

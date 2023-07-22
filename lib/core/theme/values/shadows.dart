@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class Shadows {
   static const BoxShadow primaryShadow = BoxShadow(
     color: Color.fromARGB(41, 0, 0, 0),
