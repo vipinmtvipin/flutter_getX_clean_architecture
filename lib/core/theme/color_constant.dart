@@ -43,7 +43,5 @@ class AppColors {
   static Color indigo = HexColor('#223263');
   static Color pink = HexColor('#fb7181');
 
-  static const mainColorInt = 0xFF171E90;
-  static const secondaryColorInt = 0xFF01B4BC;
   
 }

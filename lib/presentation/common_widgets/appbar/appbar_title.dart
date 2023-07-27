@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:getx_clean_template_vip/core/theme/app_text_style.dart';
 
-import '../../../core/theme/app_style.dart';
+
 import '../../../core/theme/color_constant.dart';
 import '../../../core/utils/size_utils.dart';
 
@@ -27,7 +28,7 @@ class AppbarTitle extends StatelessWidget {
           text,
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.left,
-          style: AppStyle.txtPoppinsBold16.copyWith(
+          style: AppTextStyle.txtBold16.copyWith(
             letterSpacing: getHorizontalSize(
               0.5,
             ),

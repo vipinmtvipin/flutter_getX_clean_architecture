@@ -3,7 +3,9 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:getx_clean_template_vip/core/theme/app_style.dart';
+
+import '../core/theme/app_text_style.dart';
+
 
 
 class BaseController extends GetxController {
@@ -11,19 +13,15 @@ class BaseController extends GetxController {
   var isLoading = false.obs;
 
   void showLoadingDialoge() {
-     Future.delayed(Duration.zero, ()
-       {
-      if(!isLoading.value) {
-        Get.defaultDialog(
-          title: "",
-          backgroundColor: Colors.transparent,
-          content: spinkitloader,
-          onWillPop: () async => false,
-          barrierDismissible: false,);
+    Future.delayed(Duration.zero, () {
+      if (!isLoading.value) {
+        Get.dialog(
+          progressLoader,
+          barrierDismissible: false,
+        );
       }
-          isLoading(true);
+      isLoading(true);
     });
-
   }
 
 
@@ -35,7 +33,7 @@ class BaseController extends GetxController {
   }
 
 
-  static final loader =  WillPopScope(
+  static final progressLoader =  WillPopScope(
     // device back arrow press time did not hide the dialog
       onWillPop: () async => false,
       child:  spinkitloader,);
@@ -55,7 +53,7 @@ class BaseController extends GetxController {
 
         const SizedBox(height: 13.0,),
 
-        Text('Please Wait...', style: AppStyle.txtPoppinsBold20Lightblue),
+        Text('Please Wait...', style: AppTextStyle.txtBold12),
 
       ],
     ),

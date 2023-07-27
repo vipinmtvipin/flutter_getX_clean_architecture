@@ -9,8 +9,8 @@ class Gradients {
       begin: Alignment.topCenter,
       end: Alignment.bottomCenter,
       colors: [
-        Color(AppColors.mainColorInt),
-        Color(AppColors.secondaryColorInt),
+        AppColors.mainColor,
+        AppColors.secondaryColor,
       ]);
 
 

@@ -1,9 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../core/routes/app_routes.dart';
-import '../../core/routes/navigation_args.dart';
-
-import '../../core/theme/app_style.dart';
+import '../../core/theme/app_text_style.dart';
 import '../../core/theme/color_constant.dart';
 import '../../core/utils/common_util.dart';
 import '../../core/utils/image_constant.dart';
@@ -64,14 +61,14 @@ class LoginScreen extends GetWidget<LoginController> {
                           child: Text("msg_welcome".tr,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
-                              style: AppStyle.txtPoppinsBold16.copyWith(
+                              style: AppTextStyle.txtBold16.copyWith(
                                   letterSpacing: getHorizontalSize(0.5)))),
                       Padding(
                           padding: getPadding(top: 10),
                           child: Text("msg_sign_in_to_cont".tr,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
-                              style: AppStyle.txtPoppinsRegular12.copyWith(
+                              style: AppTextStyle.txtBold16.copyWith(
                                   letterSpacing: getHorizontalSize(0.5)))),
                       CustomTextFormField(
                           focusNode: FocusNode(),
@@ -127,7 +124,7 @@ class LoginScreen extends GetWidget<LoginController> {
                                 Text("lbl_or".tr,
                                     overflow: TextOverflow.ellipsis,
                                     textAlign: TextAlign.left,
-                                    style: AppStyle.txtPoppinsBold14.copyWith(
+                                    style: AppTextStyle.txtBold16.copyWith(
                                         letterSpacing:
                                             getHorizontalSize(0.07))),
                                 Padding(
@@ -144,7 +141,7 @@ class LoginScreen extends GetWidget<LoginController> {
                           child: Text("msg_forgot_password".tr,
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.left,
-                              style: AppStyle.txtPoppinsBold12.copyWith(
+                              style: AppTextStyle.txtBold12.copyWith(
                                   letterSpacing: getHorizontalSize(0.5)))),
                       GestureDetector(
                           onTap: () {
@@ -216,14 +213,14 @@ class LoginScreen extends GetWidget<LoginController> {
                 child: Text("msg_welcome".tr,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
-                    style: AppStyle.txtPoppinsBold16
+                    style: AppTextStyle.txtBold16
                         .copyWith(letterSpacing: getHorizontalSize(0.5)))),
             Padding(
                 padding: getPadding(top: 10),
                 child: Text("msg_sign_in_to_cont".tr,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
-                    style: AppStyle.txtPoppinsRegular12
+                    style: AppTextStyle.txtBold16
                         .copyWith(letterSpacing: getHorizontalSize(0.5)))),
             CustomTextFormField(
                 focusNode: FocusNode(),
@@ -274,7 +271,7 @@ class LoginScreen extends GetWidget<LoginController> {
                       Text("lbl_or".tr,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.left,
-                          style: AppStyle.txtPoppinsBold14.copyWith(
+                          style: AppTextStyle.txtBold16.copyWith(
                               letterSpacing: getHorizontalSize(0.07))),
                       Padding(
                           padding: getPadding(top: 10, bottom: 9),
@@ -290,7 +287,7 @@ class LoginScreen extends GetWidget<LoginController> {
                 child: Text("msg_forgot_password".tr,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.left,
-                    style: AppStyle.txtPoppinsBold12
+                    style: AppTextStyle.txtBold16
                         .copyWith(letterSpacing: getHorizontalSize(0.5)))),
             GestureDetector(
                 onTap: () {

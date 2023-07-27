@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
+import '../constants/string_constants.dart';
 import '../utils/size_utils.dart';
 import 'color_constant.dart';
 
+/// generic Text style class,
+/// we can define our text variables based on our use cases
 class AppTextStyle {
-
-
   static TextStyle txtBold10 = TextStyle(
     color: AppColors.black,
     fontSize: getFontSize(
       10,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
     fontWeight: FontWeight.w700,
   );
 
@@ -20,17 +21,16 @@ class AppTextStyle {
     fontSize: getFontSize(
       12,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
     fontWeight: FontWeight.w700,
   );
-
 
   static TextStyle txtBold14 = TextStyle(
     color: AppColors.black,
     fontSize: getFontSize(
       14,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
     fontWeight: FontWeight.w700,
   );
 
@@ -39,24 +39,23 @@ class AppTextStyle {
     fontSize: getFontSize(
       16,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
     fontWeight: FontWeight.w700,
   );
-
 
   static TextStyle txt10 = TextStyle(
     color: AppColors.black,
     fontSize: getFontSize(
       10,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
   );
   static TextStyle txt12 = TextStyle(
     color: AppColors.black,
     fontSize: getFontSize(
       12,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
   );
 
   static TextStyle txt14 = TextStyle(
@@ -64,24 +63,22 @@ class AppTextStyle {
     fontSize: getFontSize(
       14,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
   );
   static TextStyle txt16 = TextStyle(
     color: AppColors.black,
     fontSize: getFontSize(
       16,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
   );
-
-
 
   static TextStyle txtMainColorBold20 = TextStyle(
     color: AppColors.mainColor,
     fontSize: getFontSize(
       20,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
     fontWeight: FontWeight.w700,
   );
 
@@ -91,16 +88,15 @@ class AppTextStyle {
       12,
     ),
     fontWeight: FontWeight.w700,
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
   );
-
 
   static TextStyle txtWhite14 = TextStyle(
     color: AppColors.white,
     fontSize: getFontSize(
       14,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
   );
 
   static TextStyle txtBoldWhite12 = TextStyle(
@@ -108,7 +104,7 @@ class AppTextStyle {
     fontSize: getFontSize(
       12,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
     fontWeight: FontWeight.w700,
   );
 
@@ -117,7 +113,7 @@ class AppTextStyle {
     fontSize: getFontSize(
       14,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
     fontWeight: FontWeight.w700,
   );
   static TextStyle txtBoldWhite16 = TextStyle(
@@ -125,7 +121,16 @@ class AppTextStyle {
     fontSize: getFontSize(
       16,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
+    fontWeight: FontWeight.w700,
+  );
+
+  static TextStyle txtBoldWhite22 = TextStyle(
+    color: AppColors.white,
+    fontSize: getFontSize(
+      22,
+    ),
+    fontFamily: AppStrings.fontName,
     fontWeight: FontWeight.w700,
   );
 
@@ -134,7 +139,7 @@ class AppTextStyle {
     fontSize: getFontSize(
       20,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
     fontWeight: FontWeight.w700,
   );
 
@@ -143,8 +148,7 @@ class AppTextStyle {
     fontSize: getFontSize(
       24,
     ),
-    fontFamily: 'GlacialIndifference',
+    fontFamily: AppStrings.fontName,
     fontWeight: FontWeight.w700,
   );
-
 }

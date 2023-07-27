@@ -1,11 +1,10 @@
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
-import 'package:getx_clean_template_vip/core/extensions/text_extension.dart';
-import 'package:getx_clean_template_vip/presentation/common_widgets/common_button_gradian.dart';
 import 'package:getx_clean_template_vip/presentation/home_screen/controller/home_controller.dart';
 
-import '../../core/theme/app_style.dart';
+
+import '../../core/theme/app_text_style.dart';
 import '../../core/theme/color_constant.dart';
 
 import '../../core/utils/image_constant.dart';
@@ -83,7 +82,7 @@ class HomeScreen extends GetWidget<HomeController> {
                         child: Text("msg_welcome".tr,
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.left,
-                            style: AppStyle.txtPoppinsBold12.copyWith(
+                            style: AppTextStyle.txtBold16.copyWith(
                                 letterSpacing: getHorizontalSize(0.5))),
                       ),
                       const SizedBox(
@@ -94,7 +93,7 @@ class HomeScreen extends GetWidget<HomeController> {
                         padding: const EdgeInsets.all(8.0),
                         child: Text("Your Token \n ${controller.token}",
                             textAlign: TextAlign.center,
-                            style: AppStyle.txtPoppinsBold10),
+                            style: AppTextStyle.txtBold16),
                       )),
                       const Padding(
                         padding: EdgeInsets.all(8.0),
